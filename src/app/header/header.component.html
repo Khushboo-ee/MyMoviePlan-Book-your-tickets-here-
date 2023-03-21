@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+
+    <img class="img-fluid rounded-lg" style="width: 80px; height: 60px;" src="/assets/Images/movieIcon1.jpg"
+      alt="logo" /> &nbsp;&nbsp;&nbsp;
+
+    <a class="navbar-brand" routerLink="">
+      <h1>MyMoviePlan</h1>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="">Home</a>
+        </li>&nbsp;&nbsp;
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/admin" *ngIf="userService.roleMatch(['Admin'])">Admin</a>
+        </li>&nbsp;&nbsp;
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/user" *ngIf="userService.roleMatch(['User'])">User</a>
+        </li>&nbsp;&nbsp;
+      </ul>
+      <button *ngIf="! isLoggedIn()" type="button" class="btn btn-success" routerLink="/login">Login</button>
+      <button *ngIf="isLoggedIn()" type="button" class="btn btn-danger" (click)="logout()">Logout</button>
+    </div>
+  </div>
+</nav>
+<!--navbar for admin-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" *ngIf=" isLoggedIn()">
+  <button type="button" class="btn btn-warning" routerLink="">Home</button>&nbsp;&nbsp;
+  <button *ngIf="isAdmin()" type="button" class="btn btn-info" routerLink="/addNewTicket">Add new Ticket</button>&nbsp;&nbsp;
+  <button *ngIf="isAdmin()" type="button" class="btn btn-info" routerLink="/showAllTickets">Show all Tickets</button>
+  <!-- <button type="button" class="btn btn-info" routerLink="">Remove Ticket</button> -->
+</nav>
+
+<!-- /forAdmin and /forUser rest api endpoint has to be given authentication using token so that only valid user can login to valid page --create interceptor--use that 
+interceptor-- whenever user try to login this will taken jwttoken from the localstorage and automatically add it to header present at the backend service-->

@@ -1,0 +1,113 @@
+
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="card"style="background-color: aliceblue;">
+            <div class="card-header"><h1>Tickets Details:</h1></div>
+        </div>
+        <div class="card-body" style="background-color: aliceblue;">
+            <table class="table table-info">
+                <tr style="text-align: center;">
+                    <th style="padding: 5px;">ID</th>
+                    <th style="padding: 5px;">Movie Title</th>
+                    <th style="padding: 5px;">Genre</th>
+                    <th style="padding: 5px;">Main Actors</th>
+                    <!-- <th style="padding: 5px;">Director</th>
+                    <th style="padding: 5px;">Language</th> -->
+                    <th style="padding: 10px;">Actual Price</th>
+                    <th style="padding: 5px;">Discounted Price</th>
+                    <th style="padding: 5px;">Poster</th>
+                    <th style="padding: 5px;">Delete</th>
+                    <th style="padding: 5px;">Edit</th>
+                </tr>
+
+                <tr style="text-align: center;" *ngFor="let mt of ticketDetails">
+                    <td style="padding: 5px;">{{mt.ticketId}}</td>
+                    <td style="padding: 5px;">{{mt.movieName}}</td>
+                    <td style="padding: 5px;">{{mt.genre}}</td>
+                    <td style="padding: 5px;">{{mt.actors}}</td>
+                    <!-- <td style="padding: 5px;">{{mt.director}}</td>
+                    <td style="padding: 5px;">{{mt.language}}</td> -->
+                    <td style="padding: 5px;">{{mt.actualPrice}}</td>
+                    <td style="padding: 5px;">{{mt.discountedPrice}}</td>
+                    <td style="padding: 5px;">
+                      <button mat-icon-button aria-label="iamge icon" color="primary" (click)="showPoster(mt)"  >
+                        <mat-icon>image</mat-icon>
+                      </button>
+                    </td>
+                    <td style="padding: 10px;">
+                      <button mat-icon-button aria-label="Delete icon" (click)="deleteTicket(mt.ticketId)"  color="warn">
+                        <mat-icon>delete</mat-icon>
+                      </button>
+                    </td>
+                    <td style="padding: 10px;">
+                      <button mat-icon-button aria-label="Edit icon" color="primary"  >
+                        <mat-icon>edit</mat-icon>
+                      </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- bootstrap button -->
+  <!-- <input type="button"  value="Delete"  class="btn btn-outline-danger" />
+                        &nbsp;&nbsp;&nbsp;
+                        <input type="button"  value="Modify"  class="btn btn-outline-primary" />
+                        &nbsp;&nbsp;&nbsp;
+                        <input type="button"  value="View"  class="btn btn-outline-success" /> -->
+
+
+<!-- MatTable -->
+<!-- <table mat-table [dataSource]="ticketDetails" class="mat-elevation-z8">
+
+   
+   
+    <ng-container matColumnDef=" Id">
+      <th mat-header-cell *matHeaderCellDef> Id </th>
+      <td mat-cell *matCellDef="let element"> {{element.ticketId}} </td>
+    </ng-container>
+  
+  
+    <ng-container matColumnDef="Movie Title">
+      <th mat-header-cell *matHeaderCellDef> Movie Title </th>
+      <td mat-cell *matCellDef="let element"> {{element.movieName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Movie Genre">
+        <th mat-header-cell *matHeaderCellDef> Movie Genre </th>
+        <td mat-cell *matCellDef="let element"> {{element.genre}} </td>
+      </ng-container>
+  
+   
+    <ng-container matColumnDef="Main actors ">
+      <th mat-header-cell *matHeaderCellDef> Main actors </th>
+      <td mat-cell *matCellDef="let element"> {{element.actors}} </td>
+    </ng-container>
+  
+   
+    <ng-container matColumnDef=" Director">
+      <th mat-header-cell *matHeaderCellDef> Director </th>
+      <td mat-cell *matCellDef="let element"> {{element.director}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef=" Movie Original Language">
+        <th mat-header-cell *matHeaderCellDef> Movie Original Language</th>
+        <td mat-cell *matCellDef="let element"> {{element.language}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Actual Ticket Price">
+        <th mat-header-cell *matHeaderCellDef> Actual Ticket Price</th>
+        <td mat-cell *matCellDef="let element"> {{element.actualPrice}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Discounted Ticket Price">
+        <th mat-header-cell *matHeaderCellDef> Discounted Ticket Price</th>
+        <td mat-cell *matCellDef="let element"> {{element.discountedPrice}} </td>
+      </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+   -->
+  
