@@ -26,6 +26,8 @@ import {MatTableModule} from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon';
 import { ShowMoviePosterDialogComponent } from './show-movie-poster-dialog/show-movie-poster-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { TicketViewDetailsComponent } from './ticket-view-details/ticket-view-details.component';
+import { BuyTicketComponent } from './buy-ticket/buy-ticket.component';
 
 
 @NgModule({
@@ -39,7 +41,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     ForbiddenComponent,
     AddNewTicketComponent,
     ShowAllTicketsComponent,
-    ShowMoviePosterDialogComponent
+    ShowMoviePosterDialogComponent,
+    TicketViewDetailsComponent,
+    BuyTicketComponent
   ],
   imports: [
     BrowserModule,

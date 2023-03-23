@@ -1,9 +1,34 @@
-<div class="img">
+<div class="bg">
 
     <div class="container">
         <div class="text-center" style="padding: 20px; color: #ED2188; ">
                 <h1 style="font-weight:900;font-size: 60px;"> Book Your Movie Tickets here!!</h1>
         </div>
     </div>
-
+    <div class="container">
+        <mat-grid-list cols="4" rowHeight="3:5" gutterSize="12">
+            <mat-grid-tile *ngFor="let mt of ticketDetails">
+                <div class="row p-5">
+                    <div class="image-container">
+                        <img class="home-page-product-img" [src]="mt.moviePoster[0].url" alt="">
+                    </div>
+                    <div class="mt-2">
+                        <p style="color:whitesmoke; font-weight: 500;font-size: larger;"><b>{{mt.movieName}}</b></p>
+                    </div>
+                    <div class="mb-1">
+                        <p style="color:whitesmoke;white-space: inherit; text-overflow: ellipsis;word-wrap: break-word; height:80px;width: 95%;"><b><u>Main Actors: </u></b> {{mt.actors}}</p>
+                    </div>
+                    <div class="mb-2">
+                        <span style="color:whitesmoke;">{{mt.discountedPrice | currency:'INR':symbol}}</span>&nbsp;
+                        <span style="text-decoration: line-through;color:whitesmoke;">{{mt.actualPrice | currency:'INR':symbol}}</span>
+                    </div>
+                    <div >
+                        <button type="button" mat-raised-button color="accent" (click)="showTicketDetails(mt.ticketId)" >
+                            View Details
+                        </button>
+                    </div>
+                </div>
+            </mat-grid-tile>
+          </mat-grid-list>
+    </div>
 </div>

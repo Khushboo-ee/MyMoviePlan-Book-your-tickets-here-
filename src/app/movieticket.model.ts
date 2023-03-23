@@ -1,6 +1,7 @@
 import { FileHandle } from "./file-handle.model";
 
 export interface MovieTicket{
+   
     movieName:string,
     genre:string,
     director:string,

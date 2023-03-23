@@ -1,0 +1,19 @@
+.ticket-info{
+    font-size: medium;
+}
+
+.image-container{
+    height: 500px;
+    position: relative;
+}
+.poster-zoom{
+    position: absolute;
+    max-width: 90%;
+    max-height: 90%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    
+}

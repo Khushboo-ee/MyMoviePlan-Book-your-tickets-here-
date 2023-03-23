@@ -5,6 +5,7 @@ import { MovieTicket } from '../movieticket.model';
 import { TicketService } from '../ticket.service';
 import {FileHandle} from '../file-handle.model';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -27,10 +28,12 @@ export class AddNewTicketComponent implements OnInit {
   }
   constructor(
     private ticketService:TicketService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private activatedRoute:ActivatedRoute
     ) { }
 
   ngOnInit(): void {
+    this.ticket = this.activatedRoute.snapshot.data['movieTicket']; //movieTicket is key assigned in approutingmodule.ts, storing these values from backend to ticket and this ticket is binded with the html component
   }
 
   // addTicket(ticketForm:NgForm){

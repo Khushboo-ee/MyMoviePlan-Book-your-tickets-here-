@@ -1,0 +1,47 @@
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <div class="col-6">
+            <div class="card image-container p-3">
+                <img [src]="movieTicket.moviePoster[selectedPosterIndex].url" class="poster-zoom">
+            </div>
+            <div class="mt-2">
+                <mat-grid-list cols="2" gutterSize="5" rowHeight="1:1">
+                    <mat-grid-tile *ngFor="let file of movieTicket.moviePoster; let i = index" (click)="changeIndex(i)" style="border: 1px solid lightgray;">
+                        <img [src]="file.url" height="200px" width="200px" >
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="ticket-info">
+                <div>
+                    <h2><u>{{movieTicket.movieName}}</u></h2>
+                </div>
+                <div>
+                    Movie Summary:<br />
+                    {{movieTicket.description}}
+                </div>
+                <div class="mt-2">
+                    Main Actors:<br />
+                    {{movieTicket.actors
+                    }}
+                </div>
+                <div class="mt-2">
+                    Director:<br />
+                    {{movieTicket.director
+                    }}
+                </div>
+                <div class="mt-2">
+                    <b> {{movieTicket.discountedPrice|currency:'INR':'symbol'}} </b> &nbsp;
+                    <span
+                        style="text-decoration: line-through;">{{movieTicket.actualPrice|currency:'INR':'symbol'}}</span>
+                </div>
+                <div class="mt-5 text-center">
+                    <button mat-raised-button color="accent" (click)="buyTicket(movieTicket.ticketId)" style="width: 200px;" >
+                        Buy Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

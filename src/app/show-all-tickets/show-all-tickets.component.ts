@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { ImageProcessingService } from '../image-processing.service';
 import { MovieTicket } from '../movieticket.model';
@@ -16,11 +17,12 @@ export class ShowAllTicketsComponent implements OnInit {
 
   // displayedColumns: string[] =['Id', 'Movie Title','Movie Genre','Main actors','Director','Movie Original Language','Actual Ticket Price','Discounted Ticket Price'];
 
-  ticketDetails:MovieTicket[] = [];
+  ticketDetails = [];
   constructor(
     private ticketService:TicketService,
     public posterDialog: MatDialog,
-    private imageProcessing: ImageProcessingService) { }
+    private imageProcessing: ImageProcessingService,
+    private router:Router) { }
 
   ngOnInit(): void {
     this.getAllTickets();
@@ -57,6 +59,11 @@ export class ShowAllTicketsComponent implements OnInit {
       height: '500px',
       width: '800px'
     } );
+  }
+
+  editTicket(ticketId){
+    console.log(ticketId);
+    this.router.navigate(['/addNewTicket',{ticketId:ticketId}]); //now this ticketId will be seen in the url of addNewTicket component page but for fetching the relative data from backend we need a service --> resolver
   }
 
   // public getAllTickets(){
