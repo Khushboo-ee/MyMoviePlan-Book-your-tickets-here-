@@ -54,6 +54,10 @@ export class UserService {
     }
 
   }
+
+  public userRegister(registerData){
+    return this.httpClient.post(this.PATH_API+'/registerNewUser', registerData);
+  }
   //backend-->JwtFilter-->Request.getHeader-->"Authorization"
   //-->/authenticate /userRegistration -->does not require any token or authentication
 }

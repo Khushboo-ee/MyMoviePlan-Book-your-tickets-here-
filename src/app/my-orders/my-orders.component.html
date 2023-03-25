@@ -1,0 +1,33 @@
+<div class="container mt-5 mb-2">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card"style="background-color: aliceblue;">
+                <div class="card-header"><h1>Order Details:</h1></div>
+            </div>
+            <div class="card-body" style="background-color: aliceblue;">
+                <table class="table table-info">
+                    <tr style="text-align: center;">
+                        <th style="padding: 5px;">Name</th>
+                        <th style="padding: 5px;">Contact Number</th>
+                        <!-- <th style="padding: 5px;">Movie Summary</th> -->
+                        <th style="padding: 5px;">Order Status</th>
+                        <th style="padding: 10px;">Order Amount</th>
+                        <th style="padding: 5px;">Movie Title</th>
+                       
+                    </tr>
+    
+                    <tr  *ngFor="let od of myOrderDetails" style="text-align: center;">
+                        <td style="padding: 8px;">{{od.orderFullname}}</td>
+                        <td style="padding: 8px;">{{od.orderContactNumber}}</td>
+                        <!-- <td style="padding: 8px;">{{c.movieTicket.description}}</td> -->
+                        <td style="padding: 8px;">{{od.orderStatus}}</td>
+                        <td style="padding: 8px;">{{od.orderAmount}}</td>
+                        <td style="padding: 8px;">{{od.movieTicket.movieName}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+

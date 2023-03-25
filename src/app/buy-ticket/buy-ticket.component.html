@@ -1,2 +1,88 @@
-<p>buy-ticket works!</p>
-<h1>BUY TICKET</h1>
+<div class="container mt-5">
+    <div class="card p-3">
+        <div class="row">
+            <div class="col-6">
+                <form #orderForm="ngForm" (ngSubmit)="createTransactionAndPlaceOrder(orderForm)">
+
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Full Name: </mat-label>
+                        <input matInput placeholder="fullName" [(ngModel)]="orderDetails.fullName" name="fullName">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Full Address: </mat-label>
+                        <input matInput placeholder="fullAddress" [(ngModel)]="orderDetails.fullAddress"
+                            name="fullAddress">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Contact Number</mat-label>
+                        <input matInput placeholder="contact Number" [(ngModel)]="orderDetails.contactNumber"
+                            name="contactNumber">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Alternate Contact Number</mat-label>
+                        <input matInput placeholder="alternate Contact Number"
+                            [(ngModel)]="orderDetails.alternateContactNumber" name="alternateContactNumber">
+                    </mat-form-field>
+                    <div align="right">
+                        <button type="submit" mat-stroked-button color="primary">Place Order</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-6">
+                <table class="table">
+                    <thead class="thead">
+                        <tr>
+                            <th>
+                                Movie Title
+                            </th>
+                            <th>
+                               Amount
+                            </th>
+                            <th>
+                                Quantity
+                            </th>
+                            <th>
+                                Total
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="tbody">
+                        <tr *ngFor="let mt of ticketDetails">
+                            <td>{{mt.movieName}}</td>
+                            <td>{{mt.discountedPrice}}</td>
+                            <td>
+                                <select class="form-select"
+                                #quantity
+                                [ngModel] ="getQuantityForTicket(mt.ticketId)"
+                                (change) = "onQuantityChange(quantity.value,mt.ticketId)"
+                                >
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                            </td>
+                            <td>
+                                {{getCalculatedTotal(mt.ticketId, mt.discountedPrice)}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>Grand Total:</td>
+                            <td>{{getCalculatedGrandTotal()}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>

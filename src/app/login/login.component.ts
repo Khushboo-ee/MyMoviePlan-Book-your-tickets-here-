@@ -11,6 +11,8 @@ import { UserService } from '../user.service';
 })
 export class LoginComponent implements OnInit {
 
+  msg:any;
+
   constructor(private userService:UserService,
     private userAuthSrvice:UserAuthService,
     private router:Router) { }
@@ -31,15 +33,23 @@ export class LoginComponent implements OnInit {
       if(role =='Admin'){
         this.router.navigate(['/admin']);
       }
-      else{
+      else if(role =='User'){
         this.router.navigate(['/user']);
+      }
+      else{
+        this.msg = "Entered Credentials are incorrect";
       }
     },
     (error)=>{
+      this.msg = "Entered Credentials are incorrect, Please try again!!";
       console.log(error);
     });
     console.log("Form is submitted");
     // console.log(loginForm.value); //This will print data values input in the form and print the console
+  }
+
+  registerUser(){
+    this.router.navigate(['/userReg']);
   }
 
 }

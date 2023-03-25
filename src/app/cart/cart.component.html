@@ -1,0 +1,51 @@
+<div class="container mt-5 mb-2">
+    <div class="row">
+        <div class="col-md-12">
+            <div align="right" class="mb-3" (click) = "checkout()">
+                <button mat-raised-button color="primary">
+                    Checkout
+                </button>
+            </div>
+    
+            <div class="card"style="background-color: aliceblue;">
+                <div class="card-header"><h1>Cart Details:</h1></div>
+            </div>
+            <div class="card-body" style="background-color: aliceblue;">
+                <table class="table table-info">
+                    <tr style="text-align: center;">
+                        <th style="padding: 5px;">Id</th>
+                        <th style="padding: 5px;">Movie Title</th>
+                        <!-- <th style="padding: 5px;">Movie Summary</th> -->
+                        <th style="padding: 5px;">Main Actors</th>
+                        <th style="padding: 10px;">Actual Price</th>
+                        <th style="padding: 5px;">Discounted Price</th>
+                        
+                        <th style="padding: 5px;">Remove</th>
+                        <!-- <th style="padding: 5px;">Modify</th> -->
+                    </tr>
+    
+                    <tr  *ngFor="let c of cartDetails">
+                        <td style="padding: 8px;">{{c.cartId}}</td>
+                        <td style="padding: 8px;">{{c.movieTicket.movieName}}</td>
+                        <!-- <td style="padding: 8px;">{{c.movieTicket.description}}</td> -->
+                        <td style="padding: 8px;">{{c.movieTicket.actors}}</td>
+                        <td style="padding: 8px;">{{c.movieTicket.actualPrice}}</td>
+                        <td style="padding: 8px;">{{c.movieTicket.discountedPrice}}</td>
+                       
+                       <td style="padding: 10px;">
+                          <button mat-icon-button aria-label="Delete icon" (click)="delete(c.cartId)"  color="warn">
+                            <mat-icon>delete</mat-icon>
+                          </button>
+                        </td>
+                         <!-- <td style="padding: 10px;">
+                          <button mat-icon-button aria-label="Edit icon" color="primary" (click)="editTicket(mt.ticketId)" >
+                            <mat-icon>edit</mat-icon>
+                          </button>
+                        </td> -->
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

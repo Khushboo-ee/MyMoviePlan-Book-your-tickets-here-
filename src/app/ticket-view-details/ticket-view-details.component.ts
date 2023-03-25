@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { map } from 'rxjs/operators';
+import { ImageProcessingService } from '../image-processing.service';
 // import { MovieTicket } from '../movie-ticket';
 import { MovieTicket } from '../movieticket.model';
 import { TicketService } from '../ticket.service';
@@ -16,12 +18,15 @@ export class TicketViewDetailsComponent implements OnInit {
   //ticketDetails = [];
   constructor(
     private activatedRoute:ActivatedRoute,
-    private router:Router
+    private router:Router,
+    private ticketService:TicketService,
+    private imageProcessing:ImageProcessingService
   ) { }
 
   ngOnInit(): void {
     this.movieTicket = this.activatedRoute.snapshot.data['movieTicket'];
     console.log(this.movieTicket);
+   //this.getAllTickets();
   }
 
   changeIndex(index){
@@ -33,6 +38,19 @@ export class TicketViewDetailsComponent implements OnInit {
       isSingleTicketCheckout: true, id: ticketId
     }]);
   }
+
+  addToCart(ticketId){
+    console.log(ticketId);
+    this.ticketService.addToCart(ticketId).subscribe(
+      (response) => {
+        console.log(response);
+      },
+      (error) => {
+        console.log(error);
+      }
+      )
+  }
+
 
   // public getAllTickets(){
   //   this.ticketService.getAllTickets()

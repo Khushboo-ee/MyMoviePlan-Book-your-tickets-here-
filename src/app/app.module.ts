@@ -28,6 +28,12 @@ import { ShowMoviePosterDialogComponent } from './show-movie-poster-dialog/show-
 import {MatDialogModule} from '@angular/material/dialog';
 import { TicketViewDetailsComponent } from './ticket-view-details/ticket-view-details.component';
 import { BuyTicketComponent } from './buy-ticket/buy-ticket.component';
+import { OrderConfirmationMsgComponent } from './order-confirmation-msg/order-confirmation-msg.component';
+import { UserRegisterComponent } from './user-register/user-register.component';
+import { CartComponent } from './cart/cart.component';
+import { MyOrdersComponent } from './my-orders/my-orders.component';
+import { ShowAllOrdersComponent } from './show-all-orders/show-all-orders.component';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 
 @NgModule({
@@ -43,7 +49,12 @@ import { BuyTicketComponent } from './buy-ticket/buy-ticket.component';
     ShowAllTicketsComponent,
     ShowMoviePosterDialogComponent,
     TicketViewDetailsComponent,
-    BuyTicketComponent
+    BuyTicketComponent,
+    OrderConfirmationMsgComponent,
+    UserRegisterComponent,
+    CartComponent,
+    MyOrdersComponent,
+    ShowAllOrdersComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +70,8 @@ import { BuyTicketComponent } from './buy-ticket/buy-ticket.component';
     MatGridListModule,
     MatTableModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    MatButtonToggleModule
   ],
   providers: [AuthGuard,
   {

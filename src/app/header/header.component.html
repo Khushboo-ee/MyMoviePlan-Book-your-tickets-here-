@@ -34,8 +34,11 @@
 <!--navbar for admin-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" *ngIf=" isLoggedIn()">
   <button type="button" class="btn btn-warning" routerLink="">Home</button>&nbsp;&nbsp;
+  <button type="button" *ngIf="!isAdmin()" class="btn btn-info" routerLink="/cart">Cart</button>&nbsp;&nbsp;
+  <button type="button" *ngIf="!isAdmin()" class="btn btn-info" routerLink="/myOrder">My Orders</button>&nbsp;&nbsp;
   <button *ngIf="isAdmin()" type="button" class="btn btn-info" routerLink="/addNewTicket">Add new Ticket</button>&nbsp;&nbsp;
-  <button *ngIf="isAdmin()" type="button" class="btn btn-info" routerLink="/showAllTickets">Show all Tickets</button>
+  <button *ngIf="isAdmin()" type="button" class="btn btn-info" routerLink="/showAllTickets">Show all Tickets</button>&nbsp;&nbsp;
+  <button *ngIf="isAdmin()" type="button" class="btn btn-info" routerLink="/showAllOrder">Show all Order</button>
   <!-- <button type="button" class="btn btn-info" routerLink="">Remove Ticket</button> -->
 </nav>
 

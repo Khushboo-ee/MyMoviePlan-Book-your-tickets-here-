@@ -1,0 +1,53 @@
+<div class="container mt-5 mb-2">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card"style="background-color: aliceblue;">
+                <div class="card-header"><h1>Order Details:</h1></div>
+            </div>
+            <div class="mt-2">
+                <mat-button-toggle-group  aria-label="Font Style">
+                    <mat-button-toggle value="All" (click)="getAllOrderDetailsForAdmin('All')" >All</mat-button-toggle>
+                    <mat-button-toggle value="Placed" (click)="getAllOrderDetailsForAdmin('Placed')">Placed</mat-button-toggle>
+                    <mat-button-toggle value="Watched" (click)="getAllOrderDetailsForAdmin('Watched')">Watched</mat-button-toggle>
+                  </mat-button-toggle-group>
+            </div>
+            <div class="card-body mt-2" style="background-color: aliceblue;">
+                <table class="table table-info">
+                    <tr style="text-align: center;">
+                        <th style="padding: 5px;">Order ID</th>
+                        <th style="padding: 5px;">Movie Title</th>
+                        <th style="padding: 5px;">User Full Name</th>
+                        <th style="padding: 5px;">Contact Number</th>
+                        <th style="padding: 5px;">Alternate Contact Number</th>
+                        <!-- <th style="padding: 5px;">Movie Summary</th> -->
+                        <th style="padding: 10px;">Order Amount</th>
+                        <th style="padding: 5px;">Order Status</th>
+                        <th style="padding: 10px;">Mark as watched</th>
+                    </tr>
+                   
+                    <tr  *ngFor="let od of allOrderDetails" style="text-align: center;">
+                        <td style="padding: 8px;">{{od.orderId}}</td>
+                        <td style="padding: 8px;">{{od.movieTicket.movieName}}</td>
+                        <td style="padding: 8px;">{{od.user.fullName}}</td>
+                        <td style="padding: 8px;">{{od.orderContactNumber}}</td>
+                        <td style="padding: 8px;">{{od.orderAlternateNumber}}</td>
+                        <!-- <td style="padding: 8px;">{{c.movieTicket.description}}</td> -->
+                        <td style="padding: 8px;">{{od.orderAmount}}</td>
+                        <td style="padding: 8px;">{{od.orderStatus}}</td>
+                        <td style="padding: 10px;">
+                            <button *ngIf="od.orderStatus=='Placed'"  mat-icon-button aria-label="Check icon" color="accent" style="background-color:#C70039;" (click)="markAsWatched(od.orderId)">
+                              <mat-icon>check</mat-icon>
+                            </button>
+                            <!-- <button *ngIf="od.orderStatus=='Watched'"  mat-icon-button aria-label="undo icon" color="warn" style="background-color:rgb(80, 200, 120);" (click)="markAsWatched(od.orderId)">
+                                <mat-icon>undo</mat-icon>
+                              </button> -->
+                          </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
