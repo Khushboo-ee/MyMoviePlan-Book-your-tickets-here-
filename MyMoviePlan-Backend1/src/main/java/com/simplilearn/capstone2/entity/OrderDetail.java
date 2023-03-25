@@ -21,8 +21,20 @@ public class OrderDetail {
 	private MovieTickets movieTicket;
 	@OneToOne
 	private User user;
+	private String transactionId;
 	
 	
+	
+	
+	public String getTransactionId() {
+		return transactionId;
+	}
+	public void setTransactionId(String transactionId) {
+		this.transactionId = transactionId;
+	}
+	public OrderDetail() {
+		
+	}
 	public MovieTickets getMovieTicket() {
 		return movieTicket;
 	}
@@ -77,9 +89,11 @@ public class OrderDetail {
 	public void setOrderAmount(double orderAmount) {
 		this.orderAmount = orderAmount;
 	}
-	public OrderDetail(String orderFullname, String orderFullAddress, String orderContactNumber,
-			String orderAlternateNumber, String orderStatus, double orderAmount, MovieTickets movieTicket, User user) {
+	public OrderDetail( String orderFullname, String orderFullAddress, String orderContactNumber,
+			String orderAlternateNumber, String orderStatus, double orderAmount, MovieTickets movieTicket, User user,
+			String transactionId) {
 		super();
+		
 		this.orderFullname = orderFullname;
 		this.orderFullAddress = orderFullAddress;
 		this.orderContactNumber = orderContactNumber;
@@ -88,7 +102,9 @@ public class OrderDetail {
 		this.orderAmount = orderAmount;
 		this.movieTicket = movieTicket;
 		this.user = user;
+		this.transactionId = transactionId;
 	}
+	
 	
 	
 	

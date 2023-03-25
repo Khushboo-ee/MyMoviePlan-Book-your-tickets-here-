@@ -51,10 +51,13 @@ public class JwtService implements UserDetailsService {
 
 		User user = userdao.findById(username).get();
 		if (user != null) {
-			return new org.springframework.security.core.userdetails.User(user.getUserName(), user.getUserpassword(),
+			return new org.springframework.security.core.userdetails.User(user.getUserName(), 
+					user.getUserpassword(),
 					getAuthorities(user));
-		} else {
-			throw new UsernameNotFoundException("username s not valid");
+		} 
+		else 
+		{
+			throw new UsernameNotFoundException("username is not valid");
 		}
 	}
 

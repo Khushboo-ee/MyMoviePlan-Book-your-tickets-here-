@@ -2,6 +2,7 @@ package com.simplilearn.capstone2.configuration;
 
 import java.io.IOException;
 
+
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -29,12 +30,13 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 	@Autowired
 	private JwtUtil jwtutil;
 	
-//	@Lazy
+	@Lazy
 	@Autowired
 	private JwtService jwtservice;
 
 	@Override
-	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, 
+			FilterChain filterChain)
 			throws ServletException, IOException {
 		final String header = request.getHeader("Authorization");
 
@@ -63,10 +65,12 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 			UserDetails userDetails = jwtservice.loadUserByUsername(userName);
 
 			if (jwtutil.ValidateToken(jwtToken, userDetails)) {
-				UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
-						userDetails, null, userDetails.getAuthorities());
+				UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = 
+						new UsernamePasswordAuthenticationToken(userDetails,
+								null, userDetails.getAuthorities());
 				
-				usernamePasswordAuthenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+				usernamePasswordAuthenticationToken.setDetails
+				(new WebAuthenticationDetailsSource().buildDetails(request));
 				
 				SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
 			}

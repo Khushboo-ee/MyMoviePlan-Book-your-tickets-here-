@@ -1,8 +1,10 @@
 package com.simplilearn.capstone2.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -17,6 +19,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.stereotype.Component;
 
+import com.simplilearn.capstone2.service.JwtService;
+
 
 @Configuration
 @EnableWebSecurity
@@ -26,11 +30,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private JwtAuthenticationEntryPoint jwtauthenticationentrypoint;
 	
-//	@Lazy
+	//@Lazy
 	@Autowired
 	private JwtRequestFilter jwtrequestfilter;
 	
-//	@Lazy
+	//@Lazy
 	@Autowired
 	private UserDetailsService jwtservice;
 
@@ -43,9 +47,12 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity httpsecurity) throws Exception {
 		httpsecurity.cors();
-		httpsecurity.csrf().disable().authorizeRequests().antMatchers("/authenticate","/registerNewUser","/movieticket/showall","getTicketById/{ticketId}")
+		httpsecurity.csrf().disable().authorizeRequests()
+		.antMatchers("/authenticate","/registerNewUser","/movieticket/showall","getTicketById/{ticketId}","/getTicketDetails/{isSingleTicketCheckout},{ticketId}")
 		.permitAll().antMatchers(HttpHeaders.ALLOW)
-				.permitAll().anyRequest().authenticated().and().exceptionHandling()
+				.permitAll().anyRequest().authenticated()
+				.and()
+				.exceptionHandling()
 				.authenticationEntryPoint(jwtauthenticationentrypoint).and().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		

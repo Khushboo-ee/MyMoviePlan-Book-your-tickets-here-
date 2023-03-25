@@ -62,11 +62,12 @@ public class MovieTicketController {
 		return posters;
 	}
 
-	//@PreAuthorize("hasRole('Admin')")
+	// @PreAuthorize("hasRole('Admin')")
 	@GetMapping({ "/movieticket/showall" })
 	public List<MovieTickets> getAllTickets() {
 		return mtService.getAllTickets();
 	}
+
 	@PreAuthorize("hasRole('Admin')")
 	@DeleteMapping({ "/deleteticket/{ticketId}" })
 	public void deleteTicket(@PathVariable("ticketId") Integer ticketId) {
@@ -76,7 +77,14 @@ public class MovieTicketController {
 	@GetMapping("getTicketById/{ticketId}")
 	public MovieTickets getTicketById(@PathVariable Integer ticketId) {
 		return mtService.getTicketsById(ticketId);
-		
+
+	}
+
+	@PreAuthorize("hasRole('User')")
+	@GetMapping({ "/getTicketDetails/{isSingleTicketCheckout}/{ticketId}" })
+	public List<MovieTickets> getTicketDetails(@PathVariable(name = "isSingleTicketCheckout") boolean isSingleTicketCheckout,
+			@PathVariable(name = "ticketId")Integer ticketId) {
+		return mtService.getTicketDetails(isSingleTicketCheckout, ticketId);
 	}
 
 }
@@ -87,5 +95,6 @@ public class MovieTicketController {
  * (@RequestPart("movieticket") MovieTickets mt,
  * 
  * @RequestPart("posters") MultipartFile[] file ) --> "moviticket" and "posters"
- * will be used at ui--> add-new-component.ts file
+ * will be used at ui--> add-new-component.ts file isSingleTicketCheckout-->for
+ * cart functionality
  **/
